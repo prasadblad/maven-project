@@ -27,4 +27,3 @@ Pipeline {
 					sh 'mvn install'
 				}}		
 		}}
-	}
