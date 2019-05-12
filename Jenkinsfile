@@ -41,4 +41,3 @@ pipeline {
 	                sh 'scp -o StrictHostKeyChecking=no */target/*.war ec2-user@18.188.201.192:/var/lib/tomcat'
 }
 }
-}
