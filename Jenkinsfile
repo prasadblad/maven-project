@@ -4,10 +4,9 @@ pipeline {
 
     stages {
         stage('SCM Checkout'){
-          git 'https://github.com/prasadblad/maven-project.git'
+          git 'https://github.com/prakashk0301/maven-project'
         }
-    }
-	
+  }
     {
         stage ('Compile Stage') {
 
@@ -35,12 +34,13 @@ pipeline {
                 }
             }
         }
-        
-        stage('deploy to tomcat'){
-            steps {
-	            sshagent(['1a502a02-2fb7-42dd-bf3a-5bacfc59e3c0']) {
-	                sh 'scp -o StrictHostKeyChecking=no */target/*.war ec2-user@18.188.201.192:/var/lib/tomcat'
-		}
-	    }
-	}
-    }
+
+//         stage ('deploy to tomcat') {
+//             steps {
+//                 sshagent(['f39cd834-5e32-428e-965f-d6020b95c133']) {
+//                 sh 'scp -o StrictHostKeyChecking=no */target/*.war ec2-user@172.31.38.135:/var/lib/tomcat/webapps'
+//      }
+//             }
+//   }
+}
+}
