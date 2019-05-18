@@ -27,13 +27,13 @@ pipeline {
         }
 
 
-        stage ('install Stage') {
-            steps {
-                withMaven(maven : 'MyMaven') {
-                    sh 'mvn install'
-                }
-            }
-        }
+//        stage ('install Stage') {
+//            steps {
+//                withMaven(maven : 'MyMaven') {
+//                  sh 'mvn install'
+//                }
+//            }
+//        }
 
 //         stage ('deploy to tomcat') {
 //             steps {
@@ -42,5 +42,16 @@ pipeline {
 //      }
 //             }
 //   }
-}
+        
+        stage ('sonar') {
+                steps {
+                   withSonarQubeEnv('sonar')
+                    withMaven(maven : 'MyMaven') {
+                        sh 'clean install sonar:sonar'
+                    
+                }
+            }
+        }
+        
+    }
 }
